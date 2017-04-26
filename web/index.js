@@ -23,7 +23,7 @@ function query(dp) {
 }
 
 function unload(db) {
-	$.get("http://www.lvxiaoxin.com:8080/unload/", function(data, status){
+	$.get("http://www.lvxiaoxin.com:8080/unload", function(data, status){
 		if(status=="success"){
 			alert(data);
 		}
