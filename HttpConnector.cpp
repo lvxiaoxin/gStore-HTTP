@@ -147,8 +147,8 @@ int main() {
     //GET-example for the path /query/[query_file_path], responds with the matched string in path
     //For instance a request GET /query/db123 will receive: db123
     server.resource["^/query/(.*)$"]["GET"] = [&server](shared_ptr<HttpServer::Response> response, shared_ptr<HttpServer::Request> request) {
-        string db_name=request->path_match[1];
-        string str = db_name;
+        string db_query=request->path_match[1];
+        string str = db_query;
 
         if(current_database == NULL)
         {
@@ -159,13 +159,13 @@ int main() {
 
         string sparql;
 
-        if(db_path[0]=='\"')
+        if(db_query[0]=='\"')
         {
-            sparql = db_path.substr(1, db_path.length()-2);
+            sparql = db_query.substr(1, db_query.length()-2);
         }
         else
         {
-            string ret = Util::getExactPath(db_path.c_str());
+            string ret = Util::getExactPath(db_query.c_str());
             const char *path = ret.c_str();
             if(path == NULL)
             {

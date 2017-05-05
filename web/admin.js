@@ -1,3 +1,11 @@
+function build(db, ds){
+	$.get("http://www.lvxiaoxin.com:8080/build/" + db + "/" + ds, function(data, status){
+		if(status=="success"){
+			alert(data);
+		}
+	});
+}
+  1
 function load(db) {
 	$.get("http://www.lvxiaoxin.com:8080/load/" + db, function(data, status){
 		if(status=="success"){
